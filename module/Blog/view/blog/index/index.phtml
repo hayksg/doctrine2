@@ -1,0 +1,46 @@
+<?php
+$headTitle = 'Blog';
+$this->headTitle($headTitle);
+?>
+<div class="row">
+    <div class="col-xs-6">
+        <h3><?= $this->escapeHtml($headTitle) ?></h3>
+    </div>
+    <div class="col-xs-6">
+        <div class="breadcrumb-box">
+            <?= $this->navigation('navigation')->breadcrumbs()->setminDepth(1)->setPartial('partial/breadcrumb') ?>
+        </div>
+    </div>
+</div>
+<?php if (! $this->articles) : ?>
+<h4>List is empty</h4>
+<?php else : ?>
+<br>
+<?php foreach ($this->articles as  $article) : ?>
+<div class="panel panel-default">
+    <h4 class="panel-heading">
+        <a href="<?= $this->url('blog', ['action' => 'article', 'id' => (int)$article->getId()]) ?>">
+            <?= $article->getTitle() ?>
+        </a>
+    </h4>
+    <div class="panel-body">
+        <?= $article->getShortArticle() ?>
+    </div>
+    <div class="panel-footer">
+        <span><strong>Category:</strong> &nbsp;<em><?= $article->getCategory()->getCategoryName() ?></em></span>
+        <span class="pull-right">
+            <a href="<?= $this->url('blog', ['action' => 'article', 'id' => (int)$article->getId()]) ?>">Read more</a>
+        </span>
+    </div>
+</div>
+<?php endforeach; ?>
+<?php endif; ?>
+<br>
+<?php
+    echo $this->paginationControl(
+        $this->articles,
+        'sliding',
+        'partial/paginator',
+        ['route' => 'blog']
+    );
+?>

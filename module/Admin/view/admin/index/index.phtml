@@ -1,0 +1,14 @@
+<?php
+$headTitle = 'Admin';
+$this->headTitle($headTitle);
+$breadcrumb = $this->navigation('navigation')->breadcrumbs()->setMinDepth(1)->setPartial('partial/breadcrumb');
+?>
+<?= $this->displayTitleAndBreadcrumb($headTitle, $breadcrumb) ?>
+<br>
+<p>You have the following capabilities:</p>
+<ul class="list-unstyled">
+    <li><a href="admin/category">Manage categories</a></li>
+    <li><a href="admin/article">Manage articles</a></li>
+    <li><a href="admin/comment">Manage comments</a></li>
+</ul>
+<br>

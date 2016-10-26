@@ -1,0 +1,60 @@
+<?php
+$headTitle = 'Categories';
+$this->headTitle($headTitle);
+$breadcrumb = $this->navigation('navigation')->breadcrumbs()->setminDepth(1)->setPartial('partial/breadcrumb')
+?>
+<?= $this->displayTitleAndBreadcrumb($headTitle, $breadcrumb)?>
+<br>
+<div><a href="<?= $this->url('admin/category', ['action' => 'add']) ?>" class="btn btn-default">Add category</a></div>
+<br>
+<div class="row">
+    <div class="col-lg-3 col-md-4">
+        <?php
+        $flash = $this->flashMessenger();
+        $flash->setMessageOpenFormat('<div%s>
+             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+             <ul><li>')
+            ->setMessageSeparatorString('</li><li>')
+            ->setMessageCloseString('</li></ul></div>');
+
+        echo $flash->render('error',   array('alert', 'alert-dismissible', 'alert-danger'));
+        echo $flash->render('info',    array('alert', 'alert-dismissible', 'alert-info'));
+        echo $flash->render('default', array('alert', 'alert-dismissible', 'alert-warning'));
+        echo $flash->render('success', array('alert', 'alert-dismissible', 'alert-success'));
+        ?>
+    </div>
+</div>
+<br>
+<?php if (! $this->categories) : ?>
+<h5>List is empty</h5>
+<?php else : ?>
+<div class="table-responsive">
+    <table class="table table-hover table-striped">
+        <tr>
+            <th>#</th>
+            <th>Category key</th>
+            <th>Category name</th>
+            <th>Actions</th>
+        </tr>
+        <?php $i = 0 ?>
+        <?php foreach ($this->categories as $category) : ?>
+        <tr>
+            <td><?= ++$i ?></td>
+            <td><?= $this->escapeHtml($category->getCategoryKey()) ?></td>
+            <td><?= $this->escapeHtml($category->getCategoryName()) ?></td>
+            <td>
+                <a href="<?= $this->url('admin/category', ['action' => 'edit', 'id' => (int)$category->getId()]) ?>">
+                    Edit
+                </a>
+                &nbsp;&nbsp;|&nbsp;&nbsp;
+                <a href="<?= $this->url('admin/category', ['action' => 'delete', 'id' => (int)$category->getId()]) ?>"
+                   onclick="return confirm('Are You sure?')"
+                >
+                    Delete
+                </a>
+            </td>
+        </tr>
+        <?php endforeach; ?>
+    </table>
+</div>
+<?php endif; ?>

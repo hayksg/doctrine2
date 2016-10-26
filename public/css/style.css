@@ -1,0 +1,97 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+    /* Margin bottom by footer height */
+    margin-bottom: 80px;
+}
+
+.zf-green {
+    color: #68b604;
+}
+
+.btn-success {
+  background-color: #57a900;
+  background-image: -moz-linear-gradient(top, #70d900, #57a900);
+  background-image: -ms-linear-gradient(top, #70d900, #57a900);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#70d900), to(#57a900));
+  background-image: -webkit-linear-gradient(top, #70d900, #57a900);
+  background-image: -o-linear-gradient(top, #70d900, #57a900);
+  background-image: linear-gradient(top, #70d900, #57a900);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#70d900', endColorstr='#57a900', GradientType=0);
+}
+
+.btn-success:hover,
+.btn-success:active,
+.btn-success.active,
+.btn-success.disabled,
+.btn-success[disabled] {
+  background-color: #57a900;
+}
+
+.btn-success:active, .btn-success.active {
+  background-color: #57a900;
+}
+
+div.container a.brand {
+    background: url("../img/zf2-logo.png") no-repeat scroll 0 10px transparent;
+    margin-left: 0;
+    padding: 8px 20px 12px 40px;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 80px;
+}
+
+
+.breadcrumb > li + li::before {
+    content: "/" !important;
+}
+
+.breadcrumb-box {
+    display: inline-block;
+    float: right;
+    margin-top: 25px;
+}
+
+.breadcrumb{
+    margin-bottom: 0;
+    padding: 2px 5px;
+}
+
+.star-required {
+    color: #d00;
+    font-size: 20px;
+    margin-left: 5px;
+    line-height: 10px;
+}
+
+.form-horizontal ul li {
+    color: #d00;
+}
+
+.tooltip-inner {
+    background-color: #158cba;
+    color: #ffffff;
+}
+
+.tooltip.top .tooltip-arrow {
+    border-top-color: #158cba;
+}
+
+textarea {
+    min-height: 200px;
+    resize: vertical;
+}
+
+a:hover, a:focus {
+    outline: none;
+}
